@@ -40,7 +40,7 @@ const menuItems = [
   },
   {
     label: "선수단 소개",
-    href: "/players",
+    href: "/test4/one/players",
   },
 ];
 
@@ -56,7 +56,7 @@ const serviceItems = [
   {
     title: "조합 소개",
     desc: "남양주시축구단사회적협동조합의 비전과 운영 방향을 소개합니다.",
-    image: "/images/test4/t1.jpg",
+    image: "/images/logo/logo_jahwal.png",
     href: "/about",
   },
   {
@@ -68,7 +68,7 @@ const serviceItems = [
   {
     title: "구단 및 선수단",
     desc: "구단 연혁과 선수단 소개, 주요 실적 정보를 안내합니다.",
-    image: "/images/test4/t3.jpg",
+    image: "/images/logo/namyang.svg",
     href: "/team",
   },
 ];
@@ -120,24 +120,31 @@ const Page = () => {
   return (
     <main className="min-h-screen bg-white text-[#222]">
       <header className="relative z-50 border-b border-[#e5e7eb] bg-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-1 py-4">
           <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/images/logo/thefull_logo.svg"
+          <Image
+              src="/images/logo/logo_jahwal.png"
               alt="로고"
-              width={150}
-              height={48}
-              className="h-10 w-auto"
+              width={200}
+              height={80}
+              className="h-17 w-auto"
+            />
+            <Image
+              src="/images/logo/namyang.svg"
+              alt="로고"
+              width={200}
+              height={80}
+              className="h-18 w-auto"
             />
             <div className="hidden sm:block">
               <p className="text-lg font-bold text-[#123a63]">
-                남양주시축구단사회적협동조합
+                남양주시축구단 사회적 협동조합
               </p>
               <p className="text-xs text-[#6b7280]">함께 성장하는 지역 축구 공동체</p>
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-8 text-sm font-semibold text-[#123a63] md:flex">
+          <nav className="hidden items-center gap-8 text-md font-semibold text-[#123a63] md:flex">
             {menuItems.map((item) => (
               <div key={item.label} className="group relative">
                 <Link
@@ -191,7 +198,7 @@ const Page = () => {
                 조합소개
               </Link>
               <Link
-                href="/players"
+                href="/test4/one/players"
                 className="inline-flex items-center justify-center rounded-md border border-[#123a63] bg-white px-6 py-3 text-sm font-semibold text-[#123a63] transition hover:bg-[#f8fafc]"
               >
                 선수단 소개
@@ -202,7 +209,7 @@ const Page = () => {
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
               <Image
-                src="/images/hero/1%20(2).jpg"
+                src="/images/info/namyang_cov.png"
                 alt="메인 비주얼"
                 fill
                 sizes="(min-width: 1024px) 520px, 100vw"
@@ -239,8 +246,7 @@ const Page = () => {
                     src={item.image}
                     alt={item.title}
                     fill
-                    sizes="(min-width: 768px) 33vw, 100vw"
-                    className="object-cover"
+                    sizes="(min-width: 200px) 100vw, 100vw"
                   />
                 </div>
                 <div className="p-6">
@@ -373,7 +379,7 @@ const Page = () => {
       <footer className="bg-[#0f172a] py-8 text-white/70">
         <div className="mx-auto max-w-6xl px-6 text-sm leading-7">
           <p className="font-semibold text-white">남양주시축구단사회적협동조합</p>
-          <p>주소 및 연락처 정보를 이 영역에 배치하세요.</p>
+          <p>주소:경기도 남양주시 화도읍 경춘로 2155, 401호(케이앤디타워)</p>
           <p>Copyright © Namyangju Football Social Cooperative. All rights reserved.</p>
         </div>
       </footer>
