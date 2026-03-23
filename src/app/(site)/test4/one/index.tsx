@@ -5,10 +5,43 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const menuItems = [
-  { label: "기관소개", href: "/about" },
-  { label: "사업안내", href: "/program" },
-  { label: "공지사항", href: "/notice" },
-  { label: "오시는길", href: "/location" },
+  {
+    label: "조합소개",
+    href: "/about",
+    children: [
+      { label: "이사장인사말", href: "/about/greeting" },
+      { label: "연혁", href: "/about/history" },
+      { label: "임원소개", href: "/about/executives" },
+    ],
+  },
+  {
+    label: "행사마당",
+    href: "/event",
+    children: [
+      { label: "알림마당", href: "/event/notice" },
+      { label: "행사 갤러리", href: "/event/gallery" },
+    ],
+  },
+  {
+    label: "지원금 지급실적",
+    href: "/support-result",
+  },
+  {
+    label: "구단소개",
+    href: "/team",
+    children: [
+      { label: "연혁", href: "/team/history" },
+      { label: "연간기부금 실적", href: "/team/donation-result" },
+    ],
+  },
+  {
+    label: "오시는길",
+    href: "/location",
+  },
+  {
+    label: "선수단 소개",
+    href: "/players",
+  },
 ];
 
 type BoardItem = {
@@ -21,22 +54,22 @@ type BoardItem = {
 
 const serviceItems = [
   {
-    title: "기관 소개",
-    desc: "이용자 중심의 돌봄과 맞춤형 서비스를 제공하는 기관입니다.",
+    title: "조합 소개",
+    desc: "남양주시축구단사회적협동조합의 비전과 운영 방향을 소개합니다.",
     image: "/images/test4/t1.jpg",
     href: "/about",
   },
   {
-    title: "주요 사업 안내",
-    desc: "일상지원, 급식운영, 생활관리 등 체계적인 운영 서비스를 안내합니다.",
+    title: "행사 및 알림",
+    desc: "조합의 소식과 주요 행사, 갤러리를 확인하실 수 있습니다.",
     image: "/images/test4/t2.jpg",
-    href: "/program",
+    href: "/event",
   },
   {
-    title: "공지 및 소식",
-    desc: "기관의 최신 공지사항과 운영 소식을 빠르게 확인하실 수 있습니다.",
+    title: "구단 및 선수단",
+    desc: "구단 연혁과 선수단 소개, 주요 실적 정보를 안내합니다.",
     image: "/images/test4/t3.jpg",
-    href: "/notice",
+    href: "/team",
   },
 ];
 
@@ -86,7 +119,7 @@ const Page = () => {
 
   return (
     <main className="min-h-screen bg-white text-[#222]">
-      <header className="border-b border-[#e5e7eb] bg-white">
+      <header className="relative z-50 border-b border-[#e5e7eb] bg-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link href="/" className="flex items-center gap-3">
             <Image
@@ -97,20 +130,39 @@ const Page = () => {
               className="h-10 w-auto"
             />
             <div className="hidden sm:block">
-              <p className="text-lg font-bold text-[#123a63]">송화</p>
-              <p className="text-xs text-[#6b7280]">함께하는 따뜻한 공간</p>
+              <p className="text-lg font-bold text-[#123a63]">
+                남양주시축구단사회적협동조합
+              </p>
+              <p className="text-xs text-[#6b7280]">함께 성장하는 지역 축구 공동체</p>
             </div>
           </Link>
 
           <nav className="hidden items-center gap-8 text-sm font-semibold text-[#123a63] md:flex">
             {menuItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="transition hover:text-[#2f7d32]"
-              >
-                {item.label}
-              </Link>
+              <div key={item.label} className="group relative">
+                <Link
+                  href={item.href}
+                  className="inline-flex h-10 items-center transition hover:text-[#2f7d32]"
+                >
+                  {item.label}
+                </Link>
+
+                {item.children && (
+                  <div className="invisible absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 translate-y-2 rounded-md border border-[#e5e7eb] bg-white opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="py-2">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.label}
+                          href={child.href}
+                          className="block px-4 py-2 text-sm font-medium text-[#123a63] transition hover:bg-[#f8fafc] hover:text-[#2f7d32]"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
         </div>
@@ -120,29 +172,29 @@ const Page = () => {
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <p className="text-sm font-semibold tracking-[0.18em] text-[#2f7d32]">
-              SONGHWA WELFARE CENTER
+              NAMYANGJU FOOTBALL SOCIAL COOPERATIVE
             </p>
             <h1 className="mt-4 text-4xl font-extrabold leading-tight text-[#123a63] sm:text-5xl">
-              함께 돌보고,
+              지역과 함께 뛰는
               <br />
-              따뜻하게 이어가는 일상
+              축구 공동체
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[#4b5563]">
-              이용자와 가족이 안심할 수 있도록 일상 돌봄, 급식, 생활 지원,
-              맞춤형 프로그램을 체계적으로 운영합니다.
+              남양주시축구단사회적협동조합은 지역사회와 함께 성장하며,
+              건강한 스포츠 문화와 나눔의 가치를 실천합니다.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/about"
                 className="inline-flex items-center justify-center rounded-md bg-[#123a63] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
               >
-                기관 소개
+                조합소개
               </Link>
               <Link
-                href="/program"
+                href="/players"
                 className="inline-flex items-center justify-center rounded-md border border-[#123a63] bg-white px-6 py-3 text-sm font-semibold text-[#123a63] transition hover:bg-[#f8fafc]"
               >
-                사업 안내
+                선수단 소개
               </Link>
             </div>
           </div>
@@ -167,7 +219,7 @@ const Page = () => {
           <div className="mb-8 flex items-end justify-between">
             <div>
               <p className="text-sm font-semibold tracking-[0.16em] text-[#2f7d32]">
-                OUR SERVICE
+                MAIN MENU
               </p>
               <h2 className="mt-2 text-3xl font-bold text-[#123a63]">
                 주요 안내
@@ -207,7 +259,7 @@ const Page = () => {
         <div className="mx-auto grid max-w-6xl gap-8 px-6 lg:grid-cols-[1fr_1fr]">
           <div className="rounded-2xl bg-white p-8 shadow-sm">
             <div className="flex items-center justify-between">
-              <h3 className="text-2xl font-bold text-[#123a63]">기관 소개</h3>
+              <h3 className="text-2xl font-bold text-[#123a63]">조합 소개</h3>
               <Link
                 href="/about"
                 className="text-sm font-semibold text-[#2f7d32]"
@@ -216,21 +268,20 @@ const Page = () => {
               </Link>
             </div>
             <p className="mt-5 text-sm leading-7 text-[#4b5563]">
-              송화는 이용자의 생활 안정과 편의를 위해 다양한 복지 서비스를
-              운영하며, 안전하고 따뜻한 환경 속에서 신뢰받는 기관이 되기 위해
-              노력하고 있습니다.
+              남양주시축구단사회적협동조합은 지역 축구 발전과 건강한 스포츠
+              문화 확산을 위해 다양한 활동을 이어가고 있습니다.
             </p>
             <p className="mt-4 text-sm leading-7 text-[#4b5563]">
-              현장 중심의 운영, 체계적인 관리, 이용자 맞춤 서비스를 바탕으로
-              일상 속 만족도를 높이는 것을 목표로 합니다.
+              조합원과 지역사회가 함께 참여하는 구조를 통해 지속가능한 축구
+              공동체를 만들어가고 있습니다.
             </p>
           </div>
 
           <div className="rounded-2xl bg-white p-8 shadow-sm">
             <div className="flex items-center justify-between">
-              <h3 className="text-2xl font-bold text-[#123a63]">공지사항</h3>
+              <h3 className="text-2xl font-bold text-[#123a63]">알림마당</h3>
               <Link
-                href="/notice"
+                href="/event/notice"
                 className="text-sm font-semibold text-[#2f7d32]"
               >
                 전체보기
@@ -278,7 +329,7 @@ const Page = () => {
             </p>
             <h3 className="mt-2 text-3xl font-bold">문의하기</h3>
             <p className="mt-3 text-sm text-white/80">
-              기관 이용 및 서비스 관련 문의를 남겨주시면 확인 후 안내드리겠습니다.
+              조합 관련 문의를 남겨주시면 확인 후 안내드리겠습니다.
             </p>
           </div>
 
@@ -321,9 +372,9 @@ const Page = () => {
 
       <footer className="bg-[#0f172a] py-8 text-white/70">
         <div className="mx-auto max-w-6xl px-6 text-sm leading-7">
-          <p className="font-semibold text-white">송화</p>
+          <p className="font-semibold text-white">남양주시축구단사회적협동조합</p>
           <p>주소 및 연락처 정보를 이 영역에 배치하세요.</p>
-          <p>Copyright © Songhwa. All rights reserved.</p>
+          <p>Copyright © Namyangju Football Social Cooperative. All rights reserved.</p>
         </div>
       </footer>
     </main>
