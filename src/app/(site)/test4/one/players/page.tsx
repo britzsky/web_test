@@ -62,9 +62,9 @@ const positionGroups: PositionGroup[] = [
     accent: "from-[#123a63] to-[#1f5b93]",
     description: "골문을 지키는 마지막 수비진",
     players: [
-      { number: "1", name: "Han-geun Park", role: "골키퍼" },
-      { number: "29", name: "Min-jae Kim", role: "골키퍼" },
-      { number: "81", name: "Seok-min Park", role: "골키퍼" },
+      { number: "1", name: "박현근(Han-geun Park)", role: "골키퍼" },
+      { number: "29", name: "김민재(Min-jae Kim)", role: "골키퍼" },
+      { number: "81", name: "김민서(Seo-min Park)", role: "골키퍼" },
     ],
   },
   {
