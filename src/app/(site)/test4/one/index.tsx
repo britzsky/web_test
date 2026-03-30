@@ -3,13 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import SiteFooter from "./_components/site-footer";
 
 const menuItems = [
   {
     label: "조합소개",
     href: "/about",
     children: [
-      { label: "이사장인사말", href: "/about/greeting" },
+      { label: "이사장인사말", href: "/test4/one/greeting" },
       { label: "연혁", href: "/about/history" },
       { label: "임원소개", href: "/about/executives" },
     ],
@@ -73,8 +74,12 @@ const serviceItems = [
   },
 ];
 
-const Page = () => {
-  const [boardPosts, setBoardPosts] = useState<BoardItem[]>([]);
+type PageProps = {
+  initialBoardPosts?: BoardItem[];
+};
+
+const Page = ({ initialBoardPosts = [] }: PageProps) => {
+  const [boardPosts] = useState<BoardItem[]>(initialBoardPosts);
   const [activeSlide, setActiveSlide] = useState(0);
 
   const formatKoreanDate = (value?: string) => {
@@ -94,35 +99,12 @@ const Page = () => {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    let isMounted = true;
-
-    const loadBoard = async () => {
-      try {
-        const res = await fetch("/api/naver-blog?blogId=far_rain", {
-          cache: "no-store",
-        });
-        if (!res.ok) return;
-        const data = await res.json();
-        if (!isMounted || !data?.items) return;
-        setBoardPosts(data.items);
-      } catch {
-        // ignore
-      }
-    };
-
-    loadBoard();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
   return (
     <main className="min-h-screen bg-white text-[#222]">
       <header className="relative z-50 border-b border-[#e5e7eb] bg-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-1 py-4">
           <Link href="/" className="flex items-center gap-3">
-          <Image
+            {/* <Image
               src="/images/logo/logo_jahwal.png"
               alt="로고"
               width={200}
@@ -135,7 +117,7 @@ const Page = () => {
               width={200}
               height={80}
               className="h-18 w-auto"
-            />
+            /> */}
             <div className="hidden sm:block">
               <p className="text-lg font-bold text-[#123a63]">
                 남양주시축구단 사회적 협동조합
@@ -376,13 +358,7 @@ const Page = () => {
         </div>
       </section>
 
-      <footer className="bg-[#0f172a] py-8 text-white/70">
-        <div className="mx-auto max-w-6xl px-6 text-sm leading-7">
-          <p className="font-semibold text-white">남양주시축구단사회적협동조합</p>
-          <p>주소:경기도 남양주시 화도읍 경춘로 2155, 401호(케이앤디타워)</p>
-          <p>Copyright © Namyangju Football Social Cooperative. All rights reserved.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 };

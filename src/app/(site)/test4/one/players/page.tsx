@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import SiteFooter from "../_components/site-footer";
 
 const menuItems = [
   {
     label: "조합소개",
     href: "/about",
     children: [
-      { label: "이사장 인사말", href: "/about/greeting" },
+      { label: "이사장 인사말", href: "/test4/one/greeting" },
       { label: "연혁", href: "/about/history" },
       { label: "임원소개", href: "/about/executives" },
     ],
@@ -130,7 +131,7 @@ export default function PlayersPage() {
       <header className="relative z-50 border-b border-[#e5e7eb] bg-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-1 py-4">
           <Link href="/test4/one" className="flex items-center gap-3">
-            <Image
+            {/* <Image
               src="/images/logo/logo_jahwal.png"
               alt="로고"
               width={200}
@@ -143,7 +144,7 @@ export default function PlayersPage() {
               width={200}
               height={80}
               className="h-18 w-auto"
-            />
+            /> */}
             <div className="hidden sm:block">
               <p className="text-lg font-bold text-[#123a63]">
                 남양주시축구단 사회적 협동조합
@@ -187,7 +188,7 @@ export default function PlayersPage() {
 
       <section className="relative overflow-hidden bg-[#123a63] text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.18),_transparent_32%),linear-gradient(120deg,_rgba(47,125,50,0.35),_transparent_45%)]" />
-        <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-2 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <p className="text-sm font-semibold tracking-[0.22em] text-white/70">
               PLAYER SQUAD
@@ -307,50 +308,7 @@ export default function PlayersPage() {
           </div>
         </div>
       </section>
-
-      <section className="pb-16">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="rounded-[28px] border border-[#dbe4ee] bg-white p-8 shadow-sm">
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div>
-                <p className="text-sm font-semibold tracking-[0.16em] text-[#2f7d32]">
-                  NOTICE
-                </p>
-                <h3 className="mt-2 text-2xl font-bold text-[#123a63]">
-                  선수단 정보 안내
-                </h3>
-              </div>
-              <Link
-                href="/test4/one"
-                className="inline-flex items-center justify-center rounded-md bg-[#123a63] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-              >
-                메인 페이지로 이동
-              </Link>
-            </div>
-
-            <div className="mt-6 grid gap-4 text-sm leading-7 text-[#4b5563] md:grid-cols-2">
-              <p>
-                본 페이지는 공개된 참고 자료를 바탕으로 정리한 선수단 소개
-                화면입니다. 추후 실제 구단 데이터에 맞춰 프로필, 사진, 기록 카드로
-                확장할 수 있도록 레이아웃을 단순하게 구성했습니다.
-              </p>
-              <p>
-                테스트 목적의 `test4` 범위만 유지하기 위해 공용 모듈 의존성을
-                최소화했고, 현재는 페이지 자체만으로도 확인 가능하도록 정리해
-                두었습니다.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="bg-[#0f172a] py-8 text-white/70">
-        <div className="mx-auto max-w-6xl px-6 text-sm leading-7">
-          <p className="font-semibold text-white">남양주시축구단사회적협동조합</p>
-          <p>주소: 경기도 남양주시 화도읍 경춘로 2155, 401호(케이앤디타워)</p>
-          <p>Copyright © Namyangju Football Social Cooperative. All rights reserved.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
