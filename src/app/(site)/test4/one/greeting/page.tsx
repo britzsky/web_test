@@ -21,7 +21,7 @@ const menuItems = [
     ],
   },
   {
-    label: "지원금 지급실적",
+    label: "기부금 및 지원금",
     href: "/support-result",
   },
   {

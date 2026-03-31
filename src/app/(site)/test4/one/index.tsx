@@ -24,7 +24,7 @@ const menuItems = [
     ],
   },
   {
-    label: "지원금 지급실적",
+    label: "기부금 및 지원금",
     href: "/support-result",
   },
   {
@@ -191,7 +191,7 @@ const Page = ({ initialBoardPosts = [] }: PageProps) => {
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
               <Image
-                src="/images/info/namyang_cov.png"
+                src="/images/info/namyang_cov.jpg"
                 alt="메인 비주얼"
                 fill
                 sizes="(min-width: 1024px) 520px, 100vw"

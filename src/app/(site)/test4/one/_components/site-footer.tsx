@@ -5,16 +5,16 @@ export default function SiteFooter() {
     <footer className="bg-[#0f172a] py-8 text-white/70">
       <div className="mx-auto grid max-w-6xl gap-8 px-12 text-sm leading-7 md:grid-cols-2">
         <div>
-          <p className="font-semibold text-white">남양주시축구단사회적협동조합</p>
-          <p>주소: 경기도 남양주시 화도읍 경춘로 2155, 401호(케이앤디타워)</p>
+          <p className="font-semibold text-white">남양주시축구단 사회적 협동조합</p>
+          <p>주소: 경기도 남양주시 화도읍 경춘로 2155번길 KD 타워 4층</p>
           <p>Copyright © Namyangju Football Social Cooperative. All rights reserved.</p>
         </div>
         <div>
-          <p className="font-semibold text-white">남양주시축구단사회적협동조합</p>
+          <p className="font-semibold text-white">남양주시축구단 사회적 협동조합</p>
           <p className="mt-2">
-            조합홈페이지는 한글홈페이지로 연간 기부금 모금액 및 활용실적을 공개할 수 있는
-            기부금 카테고리와 국민권익위원회, 국세청 또는 주무관청 중 1개 이상 링크가
-            되어 있어야 하고, 포털에서 검색이 가능해야 합니다.
+            조합 홈페이지는 연간 기부금 모금액 및 활용실적을 공개할 수 있는
+            기부금 카테고리와 국민권익위원회, 국세청 또는 주무관청 중 1개 이상
+            링크가 연결되어 있어야 하며, 포털 검색이 가능해야 합니다.
           </p>
           <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
             <Link
