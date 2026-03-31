@@ -57,7 +57,7 @@ const serviceItems = [
   {
     title: "조합 소개",
     desc: "남양주시축구단사회적협동조합의 비전과 운영 방향을 소개합니다.",
-    image: "/images/logo/logo_jahwal.png",
+    image: "/images/logo/logojahwal.png",
     href: "/about",
   },
   {
@@ -191,7 +191,7 @@ const Page = ({ initialBoardPosts = [] }: PageProps) => {
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
               <Image
-                src="/images/info/namyang_cov.jpg"
+                src="/images/info/namyangcov.jpg"
                 alt="메인 비주얼"
                 fill
                 sizes="(min-width: 1024px) 520px, 100vw"
