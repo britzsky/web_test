@@ -72,7 +72,6 @@ export default function GreetingPage() {
                 >
                   {item.label}
                 </Link>
-
                 {item.children && (
                   <div className="invisible absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 translate-y-2 rounded-md border border-[#e5e7eb] bg-white opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                     <div className="py-2">
