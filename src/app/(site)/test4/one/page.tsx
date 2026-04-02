@@ -1,4 +1,5 @@
 import Page from "./index";
+import { getSiteImagePaths } from "../../../../lib/site-images";
 
 type BoardItem = {
   title: string;
@@ -106,6 +107,7 @@ const getBoardPosts = async () => {
 
 export default async function RoutePage() {
   const initialBoardPosts = await getBoardPosts();
+  const imagePaths = await getSiteImagePaths();
 
-  return <Page initialBoardPosts={initialBoardPosts} />;
+  return <Page initialBoardPosts={initialBoardPosts} imagePaths={imagePaths} />;
 }

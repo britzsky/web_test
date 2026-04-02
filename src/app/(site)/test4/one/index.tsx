@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import type { SiteImagePaths } from "../../../../lib/site-images";
 import SiteFooter from "./_components/site-footer";
 
 const menuItems = [
@@ -53,34 +54,34 @@ type BoardItem = {
   imageUrl?: string;
 };
 
-const serviceItems = [
-  {
-    title: "조합 소개",
-    desc: "남양주시축구단사회적협동조합의 비전과 운영 방향을 소개합니다.",
-    image: "/images/logo/logojahwal.png",
-    href: "/about",
-  },
-  {
-    title: "행사 및 알림",
-    desc: "조합의 소식과 주요 행사, 갤러리를 확인하실 수 있습니다.",
-    image: "/images/test4/t2.jpg",
-    href: "/event",
-  },
-  {
-    title: "구단 및 선수단",
-    desc: "구단 연혁과 선수단 소개, 주요 실적 정보를 안내합니다.",
-    image: "/images/logo/namyang.svg",
-    href: "/team",
-  },
-];
-
 type PageProps = {
   initialBoardPosts?: BoardItem[];
+  imagePaths: SiteImagePaths;
 };
 
-const Page = ({ initialBoardPosts = [] }: PageProps) => {
+const Page = ({ initialBoardPosts = [], imagePaths }: PageProps) => {
   const [boardPosts] = useState<BoardItem[]>(initialBoardPosts);
   const [activeSlide, setActiveSlide] = useState(0);
+  const serviceItems = [
+    {
+      title: "조합 소개",
+      desc: "남양주시축구단사회적협동조합의 비전과 운영 방향을 소개합니다.",
+      image: imagePaths.mainLogo,
+      href: "/about",
+    },
+    {
+      title: "행사 및 알림",
+      desc: "조합의 소식과 주요 행사, 갤러리를 확인하실 수 있습니다.",
+      image: imagePaths.eventCard,
+      href: "/event",
+    },
+    {
+      title: "구단 및 선수단",
+      desc: "구단 연혁과 선수단 소개, 주요 실적 정보를 안내합니다.",
+      image: imagePaths.cityLogo,
+      href: "/team",
+    },
+  ];
 
   const formatKoreanDate = (value?: string) => {
     if (!value) return "";
@@ -191,7 +192,7 @@ const Page = ({ initialBoardPosts = [] }: PageProps) => {
           <div className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
               <Image
-                src="/images/info/namyangcov.jpg"
+                src={imagePaths.hero}
                 alt="메인 비주얼"
                 fill
                 sizes="(min-width: 1024px) 520px, 100vw"

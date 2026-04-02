@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { getSiteImagePaths } from "../lib/site-images";
 
-export const metadata: Metadata = {
-  icons: {
-    icon: "/images/logo/favicon.jpg",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const imagePaths = await getSiteImagePaths();
+
+  return {
+    icons: {
+      icon: imagePaths.favicon,
+    },
+  };
+}
 
 export default function RootLayout({
   children,
